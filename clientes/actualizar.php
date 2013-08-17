@@ -13,6 +13,7 @@ $valores=array("nombres"=>"'$nombres'",
 			"numerocasa"=>"'$numerocasa'",
 			"tipo"=>"'$tipo'",
 			"codcategoria"=>"'$codcategoria'",
+			"codclientecategoria"=>"'$codclientecategoria'",
 			"medidor"=>"'$medidor'",
 			"kwbinicio"=>"'$kwbinicio'",
 			"observacion"=>"'$observacion'"

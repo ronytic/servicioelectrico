@@ -5,9 +5,11 @@ $narchivo="planilla";
 include_once("../../class/".$narchivo.".php");
 include_once("../../class/cliente.php");
 include_once("../../class/categoria.php");
+include_once("../../class/clientecategoria.php");
 ${$narchivo}=new $narchivo;
 $cliente=new cliente;
 $categoria=new categoria;
+$clientecategoria=new clientecategoria;
 extract($_POST);
 $valorformulario=0.5;
 $luminarias=1;
@@ -20,6 +22,7 @@ $pcodcliente=$pla['codcliente'];
 	$dcliente=array_shift($cliente->mostrarTodo("CodCliente=$pcodcliente"));
 	$codcategoria=$dcliente['codcategoria'];
 	$cat=array_shift($categoria->mostrar($codcategoria));
+	$clicat=array_shift($clientecategoria->mostrar($dcliente['CodCliente']));
 if($pmes-1==0){
 	$pmes=12;
 	$panio--;
@@ -60,7 +63,7 @@ $valores=array("valor"=>"'$valor'",
 				"comprobanteno"=>"'$comprobanteno'",
 				"observaciones"=>"'$observaciones'"
 				);
-${$narchivo}->actualizar($valores,$cod);
+//${$narchivo}->actualizar($valores,$cod);
 $valoresdevueltos=array("valor"=>"$valor",
 				"kwb"=>"$kwb",
 				"total"=>"$total",

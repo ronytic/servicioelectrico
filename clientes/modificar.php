@@ -10,12 +10,13 @@ $dat=array_shift(${$narchivo}->mostrar($cod));
 include_once '../funciones/funciones.php';
 include_once '../class/direccion.php';
 include_once '../class/categoria.php';
+include_once '../class/clientecategoria.php';
 $direccion=new direccion;
 $categoria=new categoria;
+$clientecategoria=new clientecategoria;
 $dir=todolista($direccion->mostrarTodo(),"coddireccion","ciudad,zona,calle","-");
 $cat=todolista($categoria->mostrarTodo(),"codcategoria","nombre,detalle","-");
-
-
+$clicat=todolista($clientecategoria->mostrarTodo(),"codclientecategoria","nombre,detalle,monto","-");
 include_once '../cabecerahtml.php';
 ?>
 <?php include_once '../cabecera.php';?>
@@ -42,6 +43,9 @@ include_once '../cabecerahtml.php';
         </tr>
         <tr>
             <td colspan="2"><?php campos("Categoria","codcategoria","select",$cat,0,"",$dat['codcategoria']);?></td>
+        </tr>
+        <tr>
+            <td colspan="2"><?php campos("Categoria Cliente, Descuento","codclientecategoria","select",$clicat,0,"",$dat['codclientecategoria']);?><small>Si no quiere otorgar un descuento, dejelo en la opción seleccionar</small></td>
         </tr>
         <tr>
             <td><?php campos("Numero Medidor","medidor","text",$dat['medidor'],0,array("size"=>30));?></td>
