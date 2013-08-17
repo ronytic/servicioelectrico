@@ -70,14 +70,24 @@ if(!empty($_GET)){
 	$pdf->Cell(30,5,"0.50",$borde,0,"C");
 	$pdf->SetXY(95,88);
 	$pdf->Cell(30,5,"1",$borde,0,"C");
-	
-	$pdf->SetXY(95,107);
+	/*Punto modificado*/
+	/*$pdf->SetXY(95,107);
 	$pdf->Cell(30,5,$plaactual['totalfactura'],$borde,0,"C");
 	$pdf->SetXY(95,114);
 	$pdf->Cell(30,5,"3.50",$borde,0,"C");
 	$pdf->SetXY(95,121);
+	$pdf->Cell(30,5,$plaactual['total'],$borde,0,"C");*/
+	
+	$pdf->SetXY(95,100);
+	$pdf->Cell(30,5,$plaactual['totalfactura'],$borde,0,"C");
+	$pdf->SetXY(95,107);
+	$pdf->Cell(30,5,"3.50",$borde,0,"C");
+	$pdf->SetXY(95,114);
+	$pdf->Cell(30,5,$plaactual['descuento'],$borde,0,"C");
+	$pdf->SetXY(95,121);
 	$pdf->Cell(30,5,$plaactual['total'],$borde,0,"C");
 	
+	/*Fin Punto Modificado*/
 	$pdf->SetXY(105,128);
 	$pdf->Cell(20,5,$plaactual['totalfactura'],$borde,0,"C");
 	
