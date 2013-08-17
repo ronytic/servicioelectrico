@@ -22,7 +22,8 @@ $pcodcliente=$pla['codcliente'];
 	$dcliente=array_shift($cliente->mostrarTodo("CodCliente=$pcodcliente"));
 	$codcategoria=$dcliente['codcategoria'];
 	$cat=array_shift($categoria->mostrar($codcategoria));
-	$clicat=array_shift($clientecategoria->mostrar($dcliente['CodCliente']));
+	$clicat=array_shift($clientecategoria->mostrar($dcliente['codclientecategoria']));
+	$descuento=$clicat['monto']!=""?$clicat['monto']:'0';
 if($pmes-1==0){
 	$pmes=12;
 	$panio--;
@@ -53,17 +54,19 @@ if($kwb<30 || $codcategoria==1){
 }
 
 $totalcosto=str_replace(",",".",$totalcosto);
-
+//echo $descuento;
 $total=number_format($totalfactura+$alumbradopublico,2);
+$total=$totalfactura-$descuento;
 $valores=array("valor"=>"'$valor'",
 				"kwb"=>"'$kwb'",
 				"total"=>"'$total'",
+				"descuento"=>"'$descuento'",
 				"totalcosto"=>"$totalcosto",
 				"totalfactura"=>"$totalfactura",
 				"comprobanteno"=>"'$comprobanteno'",
 				"observaciones"=>"'$observaciones'"
 				);
-//${$narchivo}->actualizar($valores,$cod);
+${$narchivo}->actualizar($valores,$cod);
 $valoresdevueltos=array("valor"=>"$valor",
 				"kwb"=>"$kwb",
 				"total"=>"$total",
